@@ -1,0 +1,8 @@
+'use client';
+import {useState} from 'react';
+type Assessment={latitude:number;longitude:number;status:string;warnings:string[];nextSteps:string[]};
+export default function EarthScan(){
+ const [lat,setLat]=useState('9.0765'),[lon,setLon]=useState('7.3986'),[result,setResult]=useState<Assessment|null>(null),[error,setError]=useState('');
+ async function assess(e:React.FormEvent){e.preventDefault();setError('');setResult(null);try{const response=await fetch('/api/earthscan',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({latitude:Number(lat),longitude:Number(lon)})});const data=await response.json();if(!response.ok)throw new Error(data.error||'Assessment failed');setResult(data)}catch(e){setError(e instanceof Error?e.message:'Unknown error')}}
+ return <main style={{maxWidth:820,margin:'auto',padding:'48px 20px',fontFamily:'system-ui'}}><a href="/">← GeoNexa Africa</a><h1>EarthScan Nigeria</h1><p>Preliminary location screening. No live geological datasets are connected yet.</p><form onSubmit={assess}><label>Latitude <input aria-label="Latitude" type="number" step="any" required value={lat} onChange={e=>setLat(e.target.value)}/></label><br/><label>Longitude <input aria-label="Longitude" type="number" step="any" required value={lon} onChange={e=>setLon(e.target.value)}/></label><br/><button type="submit">Create screening checklist</button></form>{error&&<p role="alert">{error}</p>}{result&&<section aria-live="polite"><h2>{result.status}</h2><p>Coordinates: {result.latitude}, {result.longitude}</p><h3>Limitations</h3><ul>{result.warnings.map(w=><li key={w}>{w}</li>)}</ul><h3>Recommended next steps</h3><ol>{result.nextSteps.map(s=><li key={s}>{s}</li>)}</ol></section>}</main>
+}
