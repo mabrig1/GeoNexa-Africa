@@ -1,3 +1,5 @@
+import type { CSSProperties } from 'react';
+
 export const metadata = {
   title: 'Kaggle Research Connection | GeoNexa Africa',
   description: 'Access the GeoNexa Kaggle notebook and the experimental cloud inference bridge.'
@@ -6,7 +8,7 @@ export const metadata = {
 const notebook = 'https://www.kaggle.com/code/mabrigkorie/geonexa';
 const run = 'https://www.kaggle.com/code/mabrigkorie/geonexa/edit/run/359001056';
 
-const card: React.CSSProperties = {
+const card: CSSProperties = {
   borderRadius: 16,
   border: '1px solid #32576a',
   background: '#123040',
