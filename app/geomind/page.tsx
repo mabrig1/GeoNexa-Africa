@@ -60,7 +60,7 @@ export default function GeoMind() {
     <section style={panel} aria-labelledby="kaggle-title">
       <h2 id="kaggle-title">Kaggle GeoNexa research source</h2>
       <p>The notebook is linked as a research and training source, <strong>not</strong> as an always-on inference API. Notebook contents, run outputs, and model readiness have not been independently verified.</p>
-      <p><a href="https://www.kaggle.com/code/mabrigkorie/geonexa/edit/run/359001056" target="_blank" rel="noopener noreferrer" style={{ color: '#7fe5cc' }}>Open Kaggle run 359001056 ↗</a></p>
+      <p><a href="/kaggle" style={{ color: '#7fe5cc' }}>Open Kaggle connection hub →</a> · <a href="https://www.kaggle.com/code/mabrigkorie/geonexa/edit/run/359001056" target="_blank" rel="noopener noreferrer" style={{ color: '#7fe5cc' }}>Open Kaggle run 359001056 ↗</a></p>
       <p><small>To run a trained LLM here, deploy its approved model artifacts to a cloud inference service and configure GeoNexa's server-side endpoint in Vercel. Datasets can remain remote.</small></p>
     </section>
 
